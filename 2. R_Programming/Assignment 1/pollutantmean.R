@@ -22,29 +22,31 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     
     if (id[1] < 1 || length(id) > 332) {
         print ("Error: Function pollutantmean: ID out of bounds.")
+        break
+    }
+    else {
+        p <- vector(mode = "numeric") ## Create a vector to accumulate non-NA observations
+        
+        for (i in id){
+            filename <- sprintf ("%s/%03d.csv", directory, i) ## Convert id to filename
+            
+            f <- read.csv(filename, header = TRUE, sep =",")  ## Read csv file
+            
+            pt <- f[, pollutant] ## grab the pollutant (includes NA's)
+            
+            p <- c(p, pt[!is.na(pt)]) ## add the non-NA observations to the vector
+            
+        }
+        
+        ## Return the mean of the pollutant across all monitors list
+        ## in the 'id' vector (ignoring NA values)
+        
+        pmean <- mean(p)
+        
+        round(pmean, 3)
+    
     }
     
-    p <- vector(mode = "numeric") ## Create a vector to accumulate non-NA observations
-    
-    for (i in id){
-        filename <- sprintf ("%s/%03d.csv", directory, i) ## Convert id to filename
-        
-        f <- read.csv(filename, header = TRUE, sep =",")  ## Read csv file
-        
-        pt <- f[, pollutant] ## grab the pollutant (includes NA's)
-        
-        p <- c(p, pt[!is.na(pt)]) ## add the non-NA observations to the vector
-        
-    }
-    
-    
-    ## Return the mean of the pollutant across all monitors list
-    ## in the 'id' vector (ignoring NA values)
-    
-    pmean <- mean(p)
-    
-    round(pmean, 3)
-
 }
 
 
