@@ -41,6 +41,6 @@ corr <- function(directory, threshold = 0) {
         corrObs <- c(corrObs, cor(sobs,nobs))
     }
     
-    round(corrObs, 5) ## Return it, rounded to 5 decimal places
+    corrObs ## Return it
 }
 
