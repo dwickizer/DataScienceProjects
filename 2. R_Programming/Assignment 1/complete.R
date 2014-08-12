@@ -42,7 +42,7 @@ complete <- function(directory, fileid = 1:332) {
             id <- c(id, as.numeric(i))     ## record the fileid for this file            
         } 
         
-        results <- cbind(id, nobs)
+        results <- data.frame(id, nobs)
         
         results
     }  
