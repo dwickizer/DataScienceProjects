@@ -1,0 +1,992 @@
+> summarize(by_package, mean(size))
+Source: local data frame [6,023 x 2]
+
+       package mean(size)
+1           A3   62194.96
+2  ABCExtremes   22904.33
+3     ABCoptim   17807.25
+4        ABCp2   30473.33
+5       ACCLMA   33375.53
+6          ACD   99055.29
+7         ACNE   96099.75
+8        ACTCD  134746.27
+9    ADGofTest   12262.91
+10        ADM3 1077203.47
+..         ...        ...
+
+| That's correct!
+
+  |==========================                                                                     |  28%
+
+| Instead of returning a single value, summarize() now returns the mean size for EACH package in our
+| dataset.
+
+...
+
+  |============================                                                                   |  30%
+
+| Let's take it a step further. I just opened an R script for you that contains a partially constructed
+| call to summarize(). Follow the instructions in the script comments.
+| 
+| When you are ready to move on, type submit(), or type reset() to reset the script to its original
+| state.
+
+> getwd()
+[1] "/Users/dale1"
+> setwd("./Desktop/Data Science - Johns Hopkins/DataScienceProjects/3. GettingAndCleaningData/")
+> submit()
+
+| Sourcing your script...
+
+Error in eval(expr, envir, enclos) : not a promise
+
+| Nice try, but that's not exactly what I was hoping for. Try again.
+
+| Follow the directions in the script comments very carefully. If R gave you an error above, try to
+| understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then
+| submit() when you are ready.
+
+> ?n
+> ?n_distinct
+> n()
+Error in n() : This function should not be called directly
+> pack_sum
+Error: object 'pack_sum' not found
+> summarize(by_package, n())
+Source: local data frame [6,023 x 2]
+
+       package n()
+1           A3  25
+2  ABCExtremes  18
+3     ABCoptim  16
+4        ABCp2  18
+5       ACCLMA  15
+6          ACD  17
+7         ACNE  16
+8        ACTCD  15
+9    ADGofTest  47
+10        ADM3  17
+..         ... ...
+> summarize(by_package, count = n())
+Source: local data frame [6,023 x 2]
+
+       package count
+1           A3    25
+2  ABCExtremes    18
+3     ABCoptim    16
+4        ABCp2    18
+5       ACCLMA    15
+6          ACD    17
+7         ACNE    16
+8        ACTCD    15
+9    ADGofTest    47
+10        ADM3    17
+..         ...   ...
+> summarize(by_package, count = n(), unique = n_distinct(ip_id))
+Source: local data frame [6,023 x 3]
+
+       package count unique
+1           A3    25     24
+2  ABCExtremes    18     17
+3     ABCoptim    16     15
+4        ABCp2    18     17
+5       ACCLMA    15     14
+6          ACD    17     16
+7         ACNE    16     15
+8        ACTCD    15     14
+9    ADGofTest    47     44
+10        ADM3    17     16
+..         ...   ...    ...
+> summarize(by_package, count = n(), unique = n_distinct(ip_id), countries = n_distinct(country))
+Source: local data frame [6,023 x 4]
+
+       package count unique countries
+1           A3    25     24        10
+2  ABCExtremes    18     17         9
+3     ABCoptim    16     15         9
+4        ABCp2    18     17        10
+5       ACCLMA    15     14         9
+6          ACD    17     16        10
+7         ACNE    16     15        10
+8        ACTCD    15     14         9
+9    ADGofTest    47     44        20
+10        ADM3    17     16        10
+..         ...   ...    ...       ...
+> summarize(by_package, count = n(), unique = n_distinct(ip_id), countries = n_distinct(country), avg_bytes = mean(size))
+Source: local data frame [6,023 x 5]
+
+       package count unique countries  avg_bytes
+1           A3    25     24        10   62194.96
+2  ABCExtremes    18     17         9   22904.33
+3     ABCoptim    16     15         9   17807.25
+4        ABCp2    18     17        10   30473.33
+5       ACCLMA    15     14         9   33375.53
+6          ACD    17     16        10   99055.29
+7         ACNE    16     15        10   96099.75
+8        ACTCD    15     14         9  134746.27
+9    ADGofTest    47     44        20   12262.91
+10        ADM3    17     16        10 1077203.47
+..         ...   ...    ...       ...        ...
+> submit()
+
+| Sourcing your script...
+
+Error in eval(expr, envir, enclos) : not a promise
+
+| You almost had it, but not quite. Try again.
+
+| Follow the directions in the script comments very carefully. If R gave you an error above, try to
+| understand what it is telling you. If you get stuck, type reset() to start with a fresh script, then
+| submit() when you are ready.
+
+> submit()
+
+| Sourcing your script...
+
+
+| That's the answer I was looking for.
+
+  |==============================                                                                 |  32%
+
+| Print the resulting tbl, pack_sum, to the console to examine its contents.
+
+> pack_sum
+Source: local data frame [6,023 x 5]
+
+       package count unique countries  avg_bytes
+1           A3    25     24        10   62194.96
+2  ABCExtremes    18     17         9   22904.33
+3     ABCoptim    16     15         9   17807.25
+4        ABCp2    18     17        10   30473.33
+5       ACCLMA    15     14         9   33375.53
+6          ACD    17     16        10   99055.29
+7         ACNE    16     15        10   96099.75
+8        ACTCD    15     14         9  134746.27
+9    ADGofTest    47     44        20   12262.91
+10        ADM3    17     16        10 1077203.47
+..         ...   ...    ...       ...        ...
+
+| Your dedication is inspiring!
+
+  |================================                                                               |  34%
+
+| The 'count' column, created with n(), contains the total number of rows (i.e. downloads) for each
+| package. The 'unique' column, created with n_distinct(ip_id), gives the total number of unique
+| downloads for each package, as measure by the number of distinct ip_id's. The 'countries' column,
+| created with n_distinct(country), provides the number of countries in which the each package was
+| downloaded. And finally, the 'avg_bytes' column, created with mean(size), contains the mean download
+| size (in bytes) for each package.
+
+...
+
+  |==================================                                                             |  36%
+
+| It's important that you understand how each column of pack_sum was created and what it means. Now that
+| we've summarized the data by individual packages, let's play around with it some more to see what we
+| can learn.
+
+...
+
+  |====================================                                                           |  38%
+
+| Naturally, we'd like to know which packages were most popular on the day these data were collected
+| (July 8, 2014). Let's start by isolating the top 1% of packages, based on the total number of
+| downloads as measured by the 'count' column.
+
+...
+
+  |======================================                                                         |  40%
+
+| We need to know the value of 'count' that splits the data into the top 1% and bottom 99% of packages
+| based on total downloads. In statistics, this is called the 0.99, or 99%, sample quantile. Use
+| quantile(pack_sum$count, probs = 0.99) to determine this number.
+
+> quantile(pack_sum$count, probs = 0.99)
+   99% 
+679.56 
+
+| You're the best!
+
+  |========================================                                                       |  43%
+
+| Now we can isolate only those packages which had more than 679 total downloads. Use filter() to select
+| all rows from pack_sum for which 'count' is strictly greater (>) than 679. Store the result in a new
+| variable called top_counts.
+
+> top_counts <- filter(pack_sum, count > 679)
+
+| You're the best!
+
+  |==========================================                                                     |  45%
+
+| Let's take a look at top_counts. Print it to the console.
+
+> top_counts
+Source: local data frame [61 x 5]
+
+        package count unique countries   avg_bytes
+1           DBI  2599    492        48  206933.250
+2       Formula   852    777        65  155742.002
+3         Hmisc   954    812        69 1367675.911
+4          LPCM  2335     17        10  526814.226
+5          MASS   834    698        66  981152.179
+6        Matrix   932    801        66 3220134.165
+7  RColorBrewer  1890   1584        79   22763.995
+8         RCurl  1504   1207        73 1903505.324
+9         RJDBC   809    107        28   18715.441
+10      RJSONIO   751    585        60 1208103.992
+11       RMySQL   862     98        21  212832.918
+12         Rcpp  3195   2044        84 2512100.355
+13      SparseM  1167    454        60  674890.722
+14          VIF   697     37        12 2344226.571
+15          XML  1022    770        62 2927022.407
+16       bitops  1549   1408        76   28715.046
+17      caTools   812    699        64  176589.018
+18          car  1008    837        64 1229122.307
+19   colorspace  1683   1433        80  357411.197
+20   data.table   680    564        59 1252721.215
+21     devtools   769    560        55  212932.640
+22    dichromat  1486   1257        74  134731.938
+23       digest  2210   1894        83  120549.294
+24       doSNOW   740     75        24    8363.755
+25     evaluate  1095    998        73   35139.161
+26      foreach  1984    485        53  358069.782
+27      formatR   815    709        65   43311.099
+28      ggplot2  4602   1680        81 2427716.054
+29       gplots   708    645        65  519971.459
+30       gtable  1466   1255        75   55137.990
+31       gtools   875    793        62  109778.034
+32        highr   807    709        64   27969.524
+33    htmltools   762    656        55   65717.295
+34         httr  1195   1015        68  293879.626
+35    iterators  1887    462        53  294757.526
+36        knitr  1037    885        70  946708.266
+37     labeling  1502   1270        75   34739.487
+38 latticeExtra   887    791        69 1909937.068
+39         lme4   938    756        68 3921084.377
+40     markdown   939    809        66  138671.633
+41         mgcv  1122   1006        72 1674032.285
+42         mime   886    780        65   15268.103
+43      munsell  1514   1276        75  119432.542
+44      mvtnorm   841    729        64  203047.132
+45       nloptr   756    682        63  754357.567
+46         plyr  2908   1754        81  799122.790
+47        proto  1500   1281        76  469796.779
+48     quantreg  1098    388        54 1733616.958
+49        rJava  2773    963        70  633522.348
+50     reshape2  2032   1652        76  330128.263
+51          rgl   786    655        70 2543589.210
+52       scales  1726   1408        77  126819.331
+53        shiny   713    455        50 1212965.833
+54         snow   809    134        30   28989.546
+55      stringr  2267   1948        82   65277.166
+56        swirl   820    698        66   95868.696
+57     testthat   818    755        64  188230.345
+58         xlsx   798    578        59  380129.548
+59       xtable   751    611        54  376072.182
+60         yaml  1062    982        72  161006.309
+61          zoo  1245   1073        63  857691.878
+
+| Keep working like that and you'll get there!
+
+  |============================================                                                   |  47%
+
+| Hey, that's the first time we've seen more than the first 10 rows of our data! By default, if the
+| dataset your working with has more than 100 rows, dplyr will only print the first 10. Otherwise, it
+| will print all rows, since it's not as overwhelming.
+
+...
+
+  |==============================================                                                 |  49%
+
+| In this case, there are 61 packages in our top 1%, so dplyr has printed all of them. If we only want
+| to see the first 20, we can use the head function like so: head(top_counts, 20).
+
+> head(top_counts, 20)
+Source: local data frame [20 x 5]
+
+        package count unique countries  avg_bytes
+1           DBI  2599    492        48  206933.25
+2       Formula   852    777        65  155742.00
+3         Hmisc   954    812        69 1367675.91
+4          LPCM  2335     17        10  526814.23
+5          MASS   834    698        66  981152.18
+6        Matrix   932    801        66 3220134.17
+7  RColorBrewer  1890   1584        79   22763.99
+8         RCurl  1504   1207        73 1903505.32
+9         RJDBC   809    107        28   18715.44
+10      RJSONIO   751    585        60 1208103.99
+11       RMySQL   862     98        21  212832.92
+12         Rcpp  3195   2044        84 2512100.35
+13      SparseM  1167    454        60  674890.72
+14          VIF   697     37        12 2344226.57
+15          XML  1022    770        62 2927022.41
+16       bitops  1549   1408        76   28715.05
+17      caTools   812    699        64  176589.02
+18          car  1008    837        64 1229122.31
+19   colorspace  1683   1433        80  357411.20
+20   data.table   680    564        59 1252721.21
+
+| You got it right!
+
+  |=================================================                                              |  51%
+
+| Okay, back to the task at hand. arrange() the rows of top_counts based on the 'count' column. We want
+| the packages with the highest number of downloads at the top, which means we want 'count' to be in
+| descending order. If you need help, check out ?arrange and/or ?desc.
+
+> arrange(top_counts, desc(count))
+Source: local data frame [61 x 5]
+
+        package count unique countries   avg_bytes
+1       ggplot2  4602   1680        81 2427716.054
+2          Rcpp  3195   2044        84 2512100.355
+3          plyr  2908   1754        81  799122.790
+4         rJava  2773    963        70  633522.348
+5           DBI  2599    492        48  206933.250
+6          LPCM  2335     17        10  526814.226
+7       stringr  2267   1948        82   65277.166
+8        digest  2210   1894        83  120549.294
+9      reshape2  2032   1652        76  330128.263
+10      foreach  1984    485        53  358069.782
+11 RColorBrewer  1890   1584        79   22763.995
+12    iterators  1887    462        53  294757.526
+13       scales  1726   1408        77  126819.331
+14   colorspace  1683   1433        80  357411.197
+15       bitops  1549   1408        76   28715.046
+16      munsell  1514   1276        75  119432.542
+17        RCurl  1504   1207        73 1903505.324
+18     labeling  1502   1270        75   34739.487
+19        proto  1500   1281        76  469796.779
+20    dichromat  1486   1257        74  134731.938
+21       gtable  1466   1255        75   55137.990
+22          zoo  1245   1073        63  857691.878
+23         httr  1195   1015        68  293879.626
+24      SparseM  1167    454        60  674890.722
+25         mgcv  1122   1006        72 1674032.285
+26     quantreg  1098    388        54 1733616.958
+27     evaluate  1095    998        73   35139.161
+28         yaml  1062    982        72  161006.309
+29        knitr  1037    885        70  946708.266
+30          XML  1022    770        62 2927022.407
+31          car  1008    837        64 1229122.307
+32        Hmisc   954    812        69 1367675.911
+33     markdown   939    809        66  138671.633
+34         lme4   938    756        68 3921084.377
+35       Matrix   932    801        66 3220134.165
+36 latticeExtra   887    791        69 1909937.068
+37         mime   886    780        65   15268.103
+38       gtools   875    793        62  109778.034
+39       RMySQL   862     98        21  212832.918
+40      Formula   852    777        65  155742.002
+41      mvtnorm   841    729        64  203047.132
+42         MASS   834    698        66  981152.179
+43        swirl   820    698        66   95868.696
+44     testthat   818    755        64  188230.345
+45      formatR   815    709        65   43311.099
+46      caTools   812    699        64  176589.018
+47        RJDBC   809    107        28   18715.441
+48         snow   809    134        30   28989.546
+49        highr   807    709        64   27969.524
+50         xlsx   798    578        59  380129.548
+51          rgl   786    655        70 2543589.210
+52     devtools   769    560        55  212932.640
+53    htmltools   762    656        55   65717.295
+54       nloptr   756    682        63  754357.567
+55      RJSONIO   751    585        60 1208103.992
+56       xtable   751    611        54  376072.182
+57       doSNOW   740     75        24    8363.755
+58        shiny   713    455        50 1212965.833
+59       gplots   708    645        65  519971.459
+60          VIF   697     37        12 2344226.571
+61   data.table   680    564        59 1252721.215
+
+| Your dedication is inspiring!
+
+  |===================================================                                            |  53%
+
+| If we use total number of downloads as our metric for popularity, then the above output shows us the
+| most popular packages downloaded from the RStudio CRAN mirror on July 8, 2014. Not surprisingly,
+| ggplot2 leads the pack with 4602 downloads, followed by Rcpp, plyr, rJava, ....
+
+...
+
+  |=====================================================                                          |  55%
+
+| ...And if you keep on going, you'll see swirl at number 43, with 820 total downloads. Sweet!
+
+...
+
+  |=======================================================                                        |  57%
+
+| Perhaps we're more interested in the number of *unique* downloads on this particular day. In other
+| words, if a package is downloaded ten times in one day from the same computer, we may wish to count
+| that as only one download. That's what the 'unique' column will tell us.
+
+...
+
+  |=========================================================                                      |  60%
+
+| Like we did with 'count', let's find the 0.99, or 99%, quantile for the 'unique' variable with
+| quantile(pack_sum$unique, probs = 0.99).
+
+> quantile(pack_sum$unique, probs = 0.99)
+99% 
+465 
+
+| That's correct!
+
+  |===========================================================                                    |  62%
+
+| Apply filter() to pack_sum to select all rows corresponding to values of 'unique' that are strictly
+| greater than 465. Assign the result to a variable called top_unique.
+
+> filter(packsum, unique > 465)
+Error in filter(packsum, unique > 465) : object 'packsum' not found
+> top_unique <- filter(pack_sum, unique > 465)
+
+| You are doing so well!
+
+  |=============================================================                                  |  64%
+
+| Let's see our top contenders! Print top_unique to the console.
+
+> top_unique
+Source: local data frame [60 x 5]
+
+        package count unique countries  avg_bytes
+1           DBI  2599    492        48  206933.25
+2       Formula   852    777        65  155742.00
+3         Hmisc   954    812        69 1367675.91
+4          MASS   834    698        66  981152.18
+5        Matrix   932    801        66 3220134.17
+6  RColorBrewer  1890   1584        79   22763.99
+7         RCurl  1504   1207        73 1903505.32
+8       RJSONIO   751    585        60 1208103.99
+9          Rcpp  3195   2044        84 2512100.35
+10    RcppEigen   546    474        52 2032426.11
+11          XML  1022    770        62 2927022.41
+12       bitops  1549   1408        76   28715.05
+13      caTools   812    699        64  176589.02
+14          car  1008    837        64 1229122.31
+15   colorspace  1683   1433        80  357411.20
+16   data.table   680    564        59 1252721.21
+17     devtools   769    560        55  212932.64
+18    dichromat  1486   1257        74  134731.94
+19       digest  2210   1894        83  120549.29
+20        e1071   562    482        61  743153.75
+21     evaluate  1095    998        73   35139.16
+22      foreach  1984    485        53  358069.78
+23      formatR   815    709        65   43311.10
+24        gdata   673    619        57  800502.47
+25      ggplot2  4602   1680        81 2427716.05
+26       gplots   708    645        65  519971.46
+27       gtable  1466   1255        75   55137.99
+28       gtools   875    793        62  109778.03
+29        highr   807    709        64   27969.52
+30    htmltools   762    656        55   65717.30
+31         httr  1195   1015        68  293879.63
+32        knitr  1037    885        70  946708.27
+33     labeling  1502   1270        75   34739.49
+34      lattice   627    523        56  642181.03
+35 latticeExtra   887    791        69 1909937.07
+36         lme4   938    756        68 3921084.38
+37     markdown   939    809        66  138671.63
+38      memoise   678    600        59   14023.51
+39         mgcv  1122   1006        72 1674032.29
+40         mime   886    780        65   15268.10
+41      munsell  1514   1276        75  119432.54
+42      mvtnorm   841    729        64  203047.13
+43       nloptr   756    682        63  754357.57
+44         plyr  2908   1754        81  799122.79
+45        proto  1500   1281        76  469796.78
+46        rJava  2773    963        70  633522.35
+47      reshape   611    522        52  111337.99
+48     reshape2  2032   1652        76  330128.26
+49          rgl   786    655        70 2543589.21
+50     sandwich   597    507        56  491268.38
+51       scales  1726   1408        77  126819.33
+52           sp   559    470        54 1410246.55
+53      stringr  2267   1948        82   65277.17
+54        swirl   820    698        66   95868.70
+55     testthat   818    755        64  188230.34
+56         xlsx   798    578        59  380129.55
+57     xlsxjars   665    527        58 9214537.15
+58       xtable   751    611        54  376072.18
+59         yaml  1062    982        72  161006.31
+60          zoo  1245   1073        63  857691.88
+
+| That's a job well done!
+
+  |===============================================================                                |  66%
+
+| Now arrange() top_unique by the 'unique' column, in descending order, to see which packages were
+| downloaded from the greatest number of unique IP addresses.
+
+> arrange(top_unique, desc(unique))
+Source: local data frame [60 x 5]
+
+        package count unique countries  avg_bytes
+1          Rcpp  3195   2044        84 2512100.35
+2       stringr  2267   1948        82   65277.17
+3        digest  2210   1894        83  120549.29
+4          plyr  2908   1754        81  799122.79
+5       ggplot2  4602   1680        81 2427716.05
+6      reshape2  2032   1652        76  330128.26
+7  RColorBrewer  1890   1584        79   22763.99
+8    colorspace  1683   1433        80  357411.20
+9        bitops  1549   1408        76   28715.05
+10       scales  1726   1408        77  126819.33
+11        proto  1500   1281        76  469796.78
+12      munsell  1514   1276        75  119432.54
+13     labeling  1502   1270        75   34739.49
+14    dichromat  1486   1257        74  134731.94
+15       gtable  1466   1255        75   55137.99
+16        RCurl  1504   1207        73 1903505.32
+17          zoo  1245   1073        63  857691.88
+18         httr  1195   1015        68  293879.63
+19         mgcv  1122   1006        72 1674032.29
+20     evaluate  1095    998        73   35139.16
+21         yaml  1062    982        72  161006.31
+22        rJava  2773    963        70  633522.35
+23        knitr  1037    885        70  946708.27
+24          car  1008    837        64 1229122.31
+25        Hmisc   954    812        69 1367675.91
+26     markdown   939    809        66  138671.63
+27       Matrix   932    801        66 3220134.17
+28       gtools   875    793        62  109778.03
+29 latticeExtra   887    791        69 1909937.07
+30         mime   886    780        65   15268.10
+31      Formula   852    777        65  155742.00
+32          XML  1022    770        62 2927022.41
+33         lme4   938    756        68 3921084.38
+34     testthat   818    755        64  188230.34
+35      mvtnorm   841    729        64  203047.13
+36      formatR   815    709        65   43311.10
+37        highr   807    709        64   27969.52
+38      caTools   812    699        64  176589.02
+39         MASS   834    698        66  981152.18
+40        swirl   820    698        66   95868.70
+41       nloptr   756    682        63  754357.57
+42    htmltools   762    656        55   65717.30
+43          rgl   786    655        70 2543589.21
+44       gplots   708    645        65  519971.46
+45        gdata   673    619        57  800502.47
+46       xtable   751    611        54  376072.18
+47      memoise   678    600        59   14023.51
+48      RJSONIO   751    585        60 1208103.99
+49         xlsx   798    578        59  380129.55
+50   data.table   680    564        59 1252721.21
+51     devtools   769    560        55  212932.64
+52     xlsxjars   665    527        58 9214537.15
+53      lattice   627    523        56  642181.03
+54      reshape   611    522        52  111337.99
+55     sandwich   597    507        56  491268.38
+56          DBI  2599    492        48  206933.25
+57      foreach  1984    485        53  358069.78
+58        e1071   562    482        61  743153.75
+59    RcppEigen   546    474        52 2032426.11
+60           sp   559    470        54 1410246.55
+
+| You are amazing!
+
+  |=================================================================                              |  68%
+
+| Now Rcpp is in the lead, followed by stringr, digest, plyr, and ggplot2. swirl moved up a few spaces
+| to number 40, with 698 unique downloads. Nice!
+
+...
+
+  |===================================================================                            |  70%
+
+| Our final metric of popularity is the number of distinct countries from which each package was
+| downloaded. We'll approach this one a little differently to introduce you to a method called
+| 'chaining' (or 'piping').
+
+...
+
+  |=====================================================================                          |  72%
+
+| Chaining allows you to string together multiple function calls in a way that is compact and readable,
+| while still accomplishing the desired result. To make it more concrete, let's compute our last
+| popularity metric from scratch, starting with our original data.
+
+...
+
+  |=======================================================================                        |  74%
+
+| I've opened up a script that contains code similar to what you've seen so far. Don't change anything.
+| Just study it for a minute, make sure you understand everything that's there, then submit() when you
+| are ready to move on.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [46 x 5]
+
+         package count unique countries  avg_bytes
+1           Rcpp  3195   2044        84 2512100.35
+2         digest  2210   1894        83  120549.29
+3        stringr  2267   1948        82   65277.17
+4           plyr  2908   1754        81  799122.79
+5        ggplot2  4602   1680        81 2427716.05
+6     colorspace  1683   1433        80  357411.20
+7   RColorBrewer  1890   1584        79   22763.99
+8         scales  1726   1408        77  126819.33
+9         bitops  1549   1408        76   28715.05
+10      reshape2  2032   1652        76  330128.26
+11         proto  1500   1281        76  469796.78
+12      labeling  1502   1270        75   34739.49
+13        gtable  1466   1255        75   55137.99
+14       munsell  1514   1276        75  119432.54
+15     dichromat  1486   1257        74  134731.94
+16      evaluate  1095    998        73   35139.16
+17         RCurl  1504   1207        73 1903505.32
+18          yaml  1062    982        72  161006.31
+19          mgcv  1122   1006        72 1674032.29
+20         rJava  2773    963        70  633522.35
+21         knitr  1037    885        70  946708.27
+22           rgl   786    655        70 2543589.21
+23         Hmisc   954    812        69 1367675.91
+24  latticeExtra   887    791        69 1909937.07
+25          httr  1195   1015        68  293879.63
+26          lme4   938    756        68 3921084.38
+27         swirl   820    698        66   95868.70
+28      markdown   939    809        66  138671.63
+29          MASS   834    698        66  981152.18
+30        Matrix   932    801        66 3220134.17
+31          mime   886    780        65   15268.10
+32       formatR   815    709        65   43311.10
+33       Formula   852    777        65  155742.00
+34        gplots   708    645        65  519971.46
+35         highr   807    709        64   27969.52
+36       caTools   812    699        64  176589.02
+37      testthat   818    755        64  188230.34
+38       mvtnorm   841    729        64  203047.13
+39           car  1008    837        64 1229122.31
+40        nloptr   756    682        63  754357.57
+41           zoo  1245   1073        63  857691.88
+42       aplpack   416    382        63 3132834.19
+43        gtools   875    793        62  109778.03
+44           XML  1022    770        62 2927022.41
+45         e1071   562    482        61  743153.75
+46 RcppArmadillo   505    444        61 1340652.31
+
+| Excellent work!
+
+  |=========================================================================                      |  77%
+
+| It's worth noting that we sorted primarily by country, but used avg_bytes (in ascending order) as a
+| tie breaker. This means that if two packages were downloaded from the same number of countries, the
+| package with a smaller average download size received a higher ranking.
+
+...
+
+  |===========================================================================                    |  79%
+
+| We'd like to accomplish the same result as the last script, but avoid saving our intermediate results.
+| This requires embedding function calls within one another.
+
+...
+
+  |=============================================================================                  |  81%
+
+| That's exactly what we've done in this script. The result is equivilent, but the code is much less
+| readable and some of the arguments are far away from the function to which they belong. Again, just
+| try to understand what is going on here, then submit() when you are ready to see a better solution.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [46 x 5]
+
+         package count unique countries  avg_bytes
+1           Rcpp  3195   2044        84 2512100.35
+2         digest  2210   1894        83  120549.29
+3        stringr  2267   1948        82   65277.17
+4           plyr  2908   1754        81  799122.79
+5        ggplot2  4602   1680        81 2427716.05
+6     colorspace  1683   1433        80  357411.20
+7   RColorBrewer  1890   1584        79   22763.99
+8         scales  1726   1408        77  126819.33
+9         bitops  1549   1408        76   28715.05
+10      reshape2  2032   1652        76  330128.26
+11         proto  1500   1281        76  469796.78
+12      labeling  1502   1270        75   34739.49
+13        gtable  1466   1255        75   55137.99
+14       munsell  1514   1276        75  119432.54
+15     dichromat  1486   1257        74  134731.94
+16      evaluate  1095    998        73   35139.16
+17         RCurl  1504   1207        73 1903505.32
+18          yaml  1062    982        72  161006.31
+19          mgcv  1122   1006        72 1674032.29
+20         rJava  2773    963        70  633522.35
+21         knitr  1037    885        70  946708.27
+22           rgl   786    655        70 2543589.21
+23         Hmisc   954    812        69 1367675.91
+24  latticeExtra   887    791        69 1909937.07
+25          httr  1195   1015        68  293879.63
+26          lme4   938    756        68 3921084.38
+27         swirl   820    698        66   95868.70
+28      markdown   939    809        66  138671.63
+29          MASS   834    698        66  981152.18
+30        Matrix   932    801        66 3220134.17
+31          mime   886    780        65   15268.10
+32       formatR   815    709        65   43311.10
+33       Formula   852    777        65  155742.00
+34        gplots   708    645        65  519971.46
+35         highr   807    709        64   27969.52
+36       caTools   812    699        64  176589.02
+37      testthat   818    755        64  188230.34
+38       mvtnorm   841    729        64  203047.13
+39           car  1008    837        64 1229122.31
+40        nloptr   756    682        63  754357.57
+41           zoo  1245   1073        63  857691.88
+42       aplpack   416    382        63 3132834.19
+43        gtools   875    793        62  109778.03
+44           XML  1022    770        62 2927022.41
+45         e1071   562    482        61  743153.75
+46 RcppArmadillo   505    444        61 1340652.31
+
+| Excellent work!
+
+  |===============================================================================                |  83%
+
+| In this script, we've used a special chaining operator, %>%, which is part of the dplyr package. You
+| can pull up the related documentation with ?chain. The benefit of %>% is that it allows us to chain
+| the function calls in a linear fashion. The code to the right of %>% operates on the result from the
+| code to the left of %>%.
+| 
+| Once again, just try to understand the code, then type submit() to continue.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [46 x 5]
+
+         package count unique countries  avg_bytes
+1           Rcpp  3195   2044        84 2512100.35
+2         digest  2210   1894        83  120549.29
+3        stringr  2267   1948        82   65277.17
+4           plyr  2908   1754        81  799122.79
+5        ggplot2  4602   1680        81 2427716.05
+6     colorspace  1683   1433        80  357411.20
+7   RColorBrewer  1890   1584        79   22763.99
+8         scales  1726   1408        77  126819.33
+9         bitops  1549   1408        76   28715.05
+10      reshape2  2032   1652        76  330128.26
+11         proto  1500   1281        76  469796.78
+12      labeling  1502   1270        75   34739.49
+13        gtable  1466   1255        75   55137.99
+14       munsell  1514   1276        75  119432.54
+15     dichromat  1486   1257        74  134731.94
+16      evaluate  1095    998        73   35139.16
+17         RCurl  1504   1207        73 1903505.32
+18          yaml  1062    982        72  161006.31
+19          mgcv  1122   1006        72 1674032.29
+20         rJava  2773    963        70  633522.35
+21         knitr  1037    885        70  946708.27
+22           rgl   786    655        70 2543589.21
+23         Hmisc   954    812        69 1367675.91
+24  latticeExtra   887    791        69 1909937.07
+25          httr  1195   1015        68  293879.63
+26          lme4   938    756        68 3921084.38
+27         swirl   820    698        66   95868.70
+28      markdown   939    809        66  138671.63
+29          MASS   834    698        66  981152.18
+30        Matrix   932    801        66 3220134.17
+31          mime   886    780        65   15268.10
+32       formatR   815    709        65   43311.10
+33       Formula   852    777        65  155742.00
+34        gplots   708    645        65  519971.46
+35         highr   807    709        64   27969.52
+36       caTools   812    699        64  176589.02
+37      testthat   818    755        64  188230.34
+38       mvtnorm   841    729        64  203047.13
+39           car  1008    837        64 1229122.31
+40        nloptr   756    682        63  754357.57
+41           zoo  1245   1073        63  857691.88
+42       aplpack   416    382        63 3132834.19
+43        gtools   875    793        62  109778.03
+44           XML  1022    770        62 2927022.41
+45         e1071   562    482        61  743153.75
+46 RcppArmadillo   505    444        61 1340652.31
+
+| That's correct!
+
+  |=================================================================================              |  85%
+
+| So, the results of the last three scripts are all identical. But, the third script provides a
+| convenient and concise alternative to the more traditional method that we've taken previously, which
+| involves saving results as we go along.
+
+...
+
+  |===================================================================================            |  87%
+
+| It looks like Rcpp is on top with downloads from 84 different countries, followed by digest, stringr,
+| plyr, and ggplot2. swirl jumped up the rankings again, this time to 27th.
+
+...
+
+  |=====================================================================================          |  89%
+
+| To help drive the point home, let's work through a few more examples of chaining.
+
+...
+
+  |=======================================================================================        |  91%
+
+| Let's build a chain of dplyr commands one step at a time, starting with the script I just opened for
+| you.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [225,468 x 4]
+
+   ip_id country      package    size
+1      1      US    htmltools   80589
+2      2      US      tseries  321767
+3      3      US        party  748063
+4      3      US        Hmisc  606104
+5      4      CA       digest   79825
+6      3      US randomForest   77681
+7      3      US         plyr  393754
+8      5      US      whisker   28216
+9      6      CN         Rcpp    5928
+10     7      US     hflights 2206029
+..   ...     ...          ...     ...
+
+| You nailed it! Good job!
+
+  |=========================================================================================      |  94%
+
+| Let's add to the chain.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [225,468 x 5]
+
+   ip_id country      package    size     size_mb
+1      1      US    htmltools   80589 0.076855659
+2      2      US      tseries  321767 0.306860924
+3      3      US        party  748063 0.713408470
+4      3      US        Hmisc  606104 0.578025818
+5      4      CA       digest   79825 0.076127052
+6      3      US randomForest   77681 0.074082375
+7      3      US         plyr  393754 0.375513077
+8      5      US      whisker   28216 0.026908875
+9      6      CN         Rcpp    5928 0.005653381
+10     7      US     hflights 2206029 2.103833199
+..   ...     ...          ...     ...         ...
+
+| You're the best!
+
+  |===========================================================================================    |  96%
+
+| A little bit more now.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [142,021 x 5]
+
+   ip_id country      package   size     size_mb
+1      1      US    htmltools  80589 0.076855659
+2      2      US      tseries 321767 0.306860924
+3      4      CA       digest  79825 0.076127052
+4      3      US randomForest  77681 0.074082375
+5      3      US         plyr 393754 0.375513077
+6      5      US      whisker  28216 0.026908875
+7      6      CN         Rcpp   5928 0.005653381
+8     13      DE        ipred 186685 0.178036690
+9     14      US       mnormt  36204 0.034526825
+10    16      US    iterators 289972 0.276538849
+..   ...     ...          ...    ...         ...
+
+| Keep working like that and you'll get there!
+
+  |=============================================================================================  |  98%
+
+| And finish it off.
+
+> submit()
+
+| Sourcing your script...
+
+Source: local data frame [142,021 x 5]
+
+   ip_id country               package   size   size_mb
+1  11034      DE                  phia 524232 0.4999466
+2   9643      US                   tis 524152 0.4998703
+3   1542      IN               RcppSMC 524060 0.4997826
+4  12354      US                 lessR 523916 0.4996452
+5  12072      US            colorspace 523880 0.4996109
+6   2514      KR              depmixS4 523863 0.4995947
+7   1111      US              depmixS4 523858 0.4995899
+8   8865      CR              depmixS4 523858 0.4995899
+9   5908      CN RcmdrPlugin.KMggplot2 523852 0.4995842
+10 12354      US RcmdrPlugin.KMggplot2 523852 0.4995842
+..   ...     ...                   ...    ...       ...
+
+| You are amazing!
+
+  |===============================================================================================| 100%
+
+| In this lesson, you learned about grouping and chaining using dplyr. You combined some of the things
+| you learned in the previous lesson with these more advanced ideas to produce concise, readable, and
+| highly effective code. Welcome to the wonderful world of dplyr!
+
+...
+
+| Are you currently enrolled in the Coursera course associated with this lesson?
+
+1: Yes
+2: No
+
+Selection: 1
+
+| Would you like me to notify Coursera that you've completed this lesson? If so, I'll need to get some
+| more info from you.
+
+1: Yes
+2: No
+3: Maybe later
+
+Selection: 1
+
+| The first item I need is your Course ID. For example, if the homepage for your Coursera course was
+| 'https://class.coursera.org/rprog-001', then your course ID would be 'rprog-001' (without the quotes).
+
+Course ID: getdata-007
+Submission login (email): dwickizer@verizon.net
+Submission password: xVbnkRMjFG
+
+| Is the following information correct?
+
+Course ID: getdata-007
+Submission login (email): dwickizer@verizon.net
+Submission password: xVbnkRMjFG
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| I'll try to tell Coursera you've completed this lesson now.
+
+| Great work!
+
+| I've notified Coursera that you have completed getdata-007, Grouping_and_Chaining_with_dplyr.
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
