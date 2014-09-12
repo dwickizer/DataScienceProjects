@@ -21,18 +21,20 @@ The file **run\_analysis.R** contains a single function by that name, **run\_ana
 
 To run the function: 
 
-_source _("run\_analysis.R")_
-_run\_analysis _(lean = TRUE, tidyOut = TRUE)_ or just _run\_analysis _()_ to accept defaults.
+_source _("run\_analysis.R")_  
+_run\_analysis _(lean = TRUE, tidyOut = TRUE)_ 
+
+or, just _run\_analysis _()_ to accept defaults.
 
 #### Optional Parameters ####
 
-* lean = TRUE: The program runs with as lean a memory footprint as possible, freeing up space as it executes.
+* **lean = TRUE:** The program runs with as lean a memory footprint as possible, freeing up space as it executes.
 
-* lean = FALSE: Useful for debug operations. When FALSE, all the variables remain memory resident for inspect. Additionally, a raw tidy version of the original data, called **Tidy\_Raw\_Samsung\_Data.txt** is output into the local directory.
+* **lean = FALSE:** Useful for debug operations. When FALSE, all the variables remain memory resident for inspect. Additionally, a raw tidy version of the original data, called **Tidy\_Raw\_Samsung\_Data.txt** is output into the local directory.
 
-* tidyOut = TRUE: A data file is written out containing the final product called **Tidy\_Samsung\_Data\_Averages\_by\_Activity\_and\_Subject.txt**. This file contains averages per activity and per subject ID, for 79 columns of Samsung measurement data.
+* **tidyOut = TRUE:** A data file is written out containing the final product called **Tidy\_Samsung\_Data\_Averages\_by\_Activity\_and\_Subject.txt**. This file contains averages per activity and per subject ID, for 79 columns of Samsung measurement data.
 
-* tidyOut = FALSE: Useful for debugging. Instead of writing the file the program returns the final data table which can be analyzed.
+* **tidyOut = FALSE:** Useful for debugging. Instead of writing the file the program returns the final data table which can be analyzed.
 
 #### Assumptions ####
 
