@@ -27,7 +27,6 @@
 
 run_analysis <- function (lean = TRUE, tidyOut = TRUE) {
     
-    library (utils)
     library (dplyr)
     
     # Steps 1. and 2a
