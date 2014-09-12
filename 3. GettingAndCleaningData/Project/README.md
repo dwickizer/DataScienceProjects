@@ -61,7 +61,7 @@ or, just _run\_analysis _()_ to accept defaults.
 
 ##### 4. Appropriately labels the data set with descriptive variable names. #####
 
-* We write out dataFrame2 to a temporary file, using _write.table ()_ with **row.names** and **col.names** set to **FALSE** (clearing the row and column names). 
+* We write out **dataFrame2** to a temporary file, using _write.table ()_ with **row.names** and **col.names** set to **FALSE** (clearing the row and column names). 
 
 * We read in the data frame using _read.table ()_, setting **colClasses** = **features**.  This gives us the proper column labels
 
@@ -73,7 +73,7 @@ or, just _run\_analysis _()_ to accept defaults.
 
 * This is accomplished by first grouping the **allData** data table, first by Activity and then by Subject ID, using the **%>%** chaining operator.
 
-* The result of that operation, then serves and the input chain to _summarise_each()_ command, using the _funs (means)_ as the function argument. This performs an amazing bit of magic which takes the mean of every column for each Activity and each Subject ID.  The result is stored in a data table called **tidyData**. 
+* The result of that operation, then serves and the input chain to _summarise_each()_ command, using the **_funs (means)_** as the function argument. This performs an amazing bit of magic which takes the mean of every column for each Activity and each Subject ID.  The result is stored in a data table called **tidyData**. 
 
 * The **tidyData** data table is then written out to a file, which serves as the final product: **Tidy\_Samsung\_Data\_Averages\_by\_Activity\_and\_Subject.txt**.
 
