@@ -80,5 +80,8 @@ or, just _run\_analysis _()_ to accept defaults.
 * **NOTE:** If the Boolean parameter, **tidyOut** is set to **FALSE** at runtime execution, then the above file is NOT saved. Instead, the **tidyData** data table is returned for analysis.
 
 
+### Data Input / Output Information ###
+
+Information about the data inputs and outputs, as well as information about other files in the project repository, can be found in the **CookBook.md** file.
 
 
