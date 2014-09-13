@@ -82,6 +82,6 @@ or, just _run\_analysis _()_ to accept defaults.
 
 ### Data Input / Output Information ###
 
-Information about the data inputs and outputs, as well as information about other files in the project repository, can be found in the **CookBook.md** file.
+Information about the data inputs and outputs, as well as information about other files in the project repository, can be found in the **CodeBook.md** file.
 
 
