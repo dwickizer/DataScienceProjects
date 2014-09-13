@@ -214,7 +214,7 @@ The final process entailed combining the Activity and Subject data in **dataFram
 
 The means of all the columns were then calculated by Activity and Subject from **allData**. That process is described in the README.md file.
 
-The result was a data table called tidyData, which is either written to a file (default) or returned.
+The result was a data table called **tidyData**, which is either written to a file (default) or returned.
 
 
 ### Other Generated Files ###
