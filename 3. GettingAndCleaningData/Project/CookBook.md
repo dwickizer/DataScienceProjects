@@ -66,88 +66,97 @@ Since there were only 6 values, rather than reading in the **activity\_labels.tx
 
 #### The Feature Labels ####
 
-All 561 feature labels and their indexes were read from the **feature.txt** file. Out of the 561 feature labels, we selected only those for the mean and standard deviation per the instructions. It was decided to use measured and derived data, including the Mean Frequency data, for completeness. (It is always simpler to go back and further pare down the data.) The program uses the _grep ()_ function to search and select the appropriate labels with either "mean" or "std" in the name.  The following indexes and labels are the ones which were selected:
+All 561 feature labels and their indexes were read from the **feature.txt** file. Out of the 561 feature labels, the program selects only those for the mean and standard deviation per the instructions. It was decided to use measured and derived data, including the Mean Frequency data, for completeness. (It is always simpler to go back and further reduce the data.) The program uses the _grep ()_ function to search and select the appropriate labels with either "mean" or "std" in the name.  The following indexes and labels are the ones which were selected, 79 in all:
 
 
-	  **Index**      **Label**					                   **Description**
+	  Index      Label					                   Description
 	
-	    1  tBodyAcc-mean()-X			Time domain, mean body acceleration, x-axis
-	    2  tBodyAcc-mean()-Y			Time domain, mean body acceleration, y-axis
-	    3  tBodyAcc-mean()-Z			Time domain, mean body acceleration, z-axis
-	    4  tBodyAcc-std()-X	    		Time domain, standard deviation of body accel, x-axis
-	    5  tBodyAcc-std()-Y				Time domain, standard deviation of body accel, y-axis
-	    6  tBodyAcc-std()-Z				Time domain, standard deviation of body accel, z-axis
-	   41  tGravityAcc-mean()-X			Time domain, mean acceleration due to gravity, x-axis
-	   42  tGravityAcc-mean()-Y			Time domain, mean acceleration due to gravity, y-axis
-	   43  tGravityAcc-mean()-Z			Time domain, mean acceleration due to gravity, z-axis
-	   44  tGravityAcc-std()-X			Time domain, std dev of accel due to gravity, x-axis
-	   45  tGravityAcc-std()-Y			Time domain, ssd dev of accel due to gravity, y-axis
-	   46  tGravityAcc-std()-Z			Time domain, std dev of accel due to gravity, z-axis
-	   81  tBodyAccJerk-mean()-X		Time domain, mean jerk (derivative of accel), x-axis
-	   82  tBodyAccJerk-mean()-Y		Time domain, mean jerk (derivative of accel), y-axis
-	   83  tBodyAccJerk-mean()-Z		Time domain, mean jerk (derivative of accel), y-axis
-	   84  tBodyAccJerk-std()-X			Time domain, standard deviation of jerk, x-axis
-	   85  tBodyAccJerk-std()-Y			Time domain, standard deviation of jerk, y-axis
-	   86  tBodyAccJerk-std()-Z			Time domain, standard deviation of jerk, z-axis
-	  121  tBodyGyro-mean()-X			Time domain, mean angular motion, x-axis
-	  122  tBodyGyro-mean()-Y			Time domain, mean angular motion, y-axis
-	  123  tBodyGyro-mean()-Z			Time domain, mean angular motion, z-axis
-	  124  tBodyGyro-std()-X			Time domain, std dev of angular motion, x-axis
-	  125  tBodyGyro-std()-Y			Time domain, std dev of angular motion, y-axis
-	  126  tBodyGyro-std()-Z			Time domain, std dev of angular motion, z-axis
-	  161  tBodyGyroJerk-mean()-X		Time domain, mean angular jerk, x-axis
-	  162  tBodyGyroJerk-mean()-Y		Time domain, mean angular jerk, y-axis
-	  163  tBodyGyroJerk-mean()-Z		Time domain, mean angular jerk, z-axis
-	  164  tBodyGyroJerk-std()-X		Time domain, std dev of angular jerk, x-axis
-	  165  tBodyGyroJerk-std()-Y		Time domain, std dev of angular jerk, y-axis
-	  166  tBodyGyroJerk-std()-Z		Time domain, std dev of angular jerk, z-axis
-	  201  tBodyAccMag-mean()			Time domain, mean magnitude of accel vector
-	  202  tBodyAccMag-std()			Time domain, std dev of mag of accel vector
-	  214  tGravityAccMag-mean()		Time domain, mean magnitude of gravity vector
-	  215  tGravityAccMag-std()			Time domain, std dev of mag of gravity vector
-	  227  tBodyAccJerkMag-mean()		Time domain, mean magnitude of jerk vector
-	  228  tBodyAccJerkMag-std()		Time domain, std dev of mag of jerk vector
-	  240  tBodyGyroMag-mean()			Time domain, mean mag of angular motion vector
-	  241  tBodyGyroMag-std()			Time domain, std dev of mag of angular motion vector
-	  253  tBodyGyroJerkMag-mean()		Time domain, mean magnitude of angular jerk vector
-	  254  tBodyGyroJerkMag-std()		Time domain, std dev of mag of angular jerk vector
-	  266  fBodyAcc-mean()-X			Frequency domain, mean body acceleration, x-axis
-	  267  fBodyAcc-mean()-Y			Frequency domain, mean body acceleration, y-axis
-	  268  fBodyAcc-mean()-Z			Frequency domain, mean body acceleration, z-axis
-	  269  fBodyAcc-std()-X    			Freq domain, standard deviation of body accel, x-axis
-	  270  fBodyAcc-std()-Y    			Freq domain, standard deviation of body accel, y-axis
-	  271  fBodyAcc-std()-Z    			Freq domain, standard deviation of body accel, z-axis
-	  294  fBodyAcc-meanFreq()-X
-	  295  fBodyAcc-meanFreq()-Y
-	  296  fBodyAcc-meanFreq()-Z
-	  345  fBodyAccJerk-mean()-X		Freq domain, mean jerk (derivative of accel), x-axis
-	  346  fBodyAccJerk-mean()-Y		Freq domain, mean jerk (derivative of accel), y-axis
-	  347  fBodyAccJerk-mean()-Z		Freq domain, mean jerk (derivative of accel), z-axis
-	  348  fBodyAccJerk-std()-X			Freq domain, std dev of jerk, x-axis
-	  349  fBodyAccJerk-std()-Y			Freq domain, std dev of jerk, y-axis
-	  350  fBodyAccJerk-std()-Z			Freq domain, std dev of jerk, z-axis
-	  373  fBodyAccJerk-meanFreq()-X
-	  374  fBodyAccJerk-meanFreq()-Y
-	  375  fBodyAccJerk-meanFreq()-Z
-	  424  fBodyGyro-mean()-X			Freq domain, mean angular motion, x-axis
-	  425  fBodyGyro-mean()-Y			Freq domain, mean angular motion, y-axis
-	  426  fBodyGyro-mean()-Z			Freq domain, mean angular motion, z-axis
-	  427  fBodyGyro-std()-X			Freq domain, std dev of angular motion, x-axis
-	  428  fBodyGyro-std()-Y			Freq domain, std dev of angular motion, y-axis
-	  429  fBodyGyro-std()-Z			Freq domain, std dev of angular motion, z-axis
-	  452  fBodyGyro-meanFreq()-X
-	  453  fBodyGyro-meanFreq()-Y
-	  454  fBodyGyro-meanFreq()-Z
-	  503  fBodyAccMag-mean()			Freq domain, mean magnitude of accel vector
-	  504  fBodyAccMag-std()			Freq domain, std dev of mag of accel vector
-	  513  fBodyAccMag-meanFreq()
-	  516  fBodyBodyAccJerkMag-mean()	Freq domain, mean magnitude of jerk vector
-	  517  fBodyBodyAccJerkMag-std()	Freq domain, std dev of mag of jerk vector
-	  526  fBodyBodyAccJerkMag-meanFreq()
-	  529  fBodyBodyGyroMag-mean()		Freq domain, mean mag of angular motion vector
-	  530  fBodyBodyGyroMag-std()		Freq domain, std dev of mag of ang motion vector
-	  539  fBodyBodyGyroMag-meanFreq()
-	  542  fBodyBodyGyroJerkMag-mean()	Freq domain, mean mag of angular jerk vector
-	  543  fBodyBodyGyroJerkMag-std()	Freq domain, std dev of mag of ang jerk vector
-	  552  fBodyBodyGyroJerkMag-meanFreq()
+	    1  tBodyAcc-mean()-X			    Time domain, mean body acceleration, x-axis
+	    2  tBodyAcc-mean()-Y			    Time domain, mean body acceleration, y-axis
+	    3  tBodyAcc-mean()-Z			    Time domain, mean body acceleration, z-axis
+	    4  tBodyAcc-std()-X	    		    Time domain, standard deviation of body accel, x-axis
+	    5  tBodyAcc-std()-Y				    Time domain, standard deviation of body accel, y-axis
+	    6  tBodyAcc-std()-Z				    Time domain, standard deviation of body accel, z-axis
+	   41  tGravityAcc-mean()-X			    Time domain, mean acceleration due to gravity, x-axis
+	   42  tGravityAcc-mean()-Y			    Time domain, mean acceleration due to gravity, y-axis
+	   43  tGravityAcc-mean()-Z			    Time domain, mean acceleration due to gravity, z-axis
+	   44  tGravityAcc-std()-X			    Time domain, std dev of accel due to gravity, x-axis
+	   45  tGravityAcc-std()-Y			    Time domain, ssd dev of accel due to gravity, y-axis
+	   46  tGravityAcc-std()-Z			    Time domain, std dev of accel due to gravity, z-axis
+	   81  tBodyAccJerk-mean()-X		    Time domain, mean jerk (derivative of accel), x-axis
+	   82  tBodyAccJerk-mean()-Y		    Time domain, mean jerk (derivative of accel), y-axis
+	   83  tBodyAccJerk-mean()-Z		    Time domain, mean jerk (derivative of accel), y-axis
+	   84  tBodyAccJerk-std()-X			    Time domain, standard deviation of jerk, x-axis
+	   85  tBodyAccJerk-std()-Y			    Time domain, standard deviation of jerk, y-axis
+	   86  tBodyAccJerk-std()-Z			    Time domain, standard deviation of jerk, z-axis
+	  121  tBodyGyro-mean()-X			    Time domain, mean angular motion, x-axis
+	  122  tBodyGyro-mean()-Y			    Time domain, mean angular motion, y-axis
+	  123  tBodyGyro-mean()-Z			    Time domain, mean angular motion, z-axis
+	  124  tBodyGyro-std()-X			    Time domain, std dev of angular motion, x-axis
+	  125  tBodyGyro-std()-Y			    Time domain, std dev of angular motion, y-axis
+	  126  tBodyGyro-std()-Z			    Time domain, std dev of angular motion, z-axis
+	  161  tBodyGyroJerk-mean()-X		    Time domain, mean angular jerk, x-axis
+	  162  tBodyGyroJerk-mean()-Y		    Time domain, mean angular jerk, y-axis
+	  163  tBodyGyroJerk-mean()-Z		    Time domain, mean angular jerk, z-axis
+	  164  tBodyGyroJerk-std()-X		    Time domain, std dev of angular jerk, x-axis
+	  165  tBodyGyroJerk-std()-Y		    Time domain, std dev of angular jerk, y-axis
+	  166  tBodyGyroJerk-std()-Z		    Time domain, std dev of angular jerk, z-axis
+	  201  tBodyAccMag-mean()			    Time domain, mean magnitude of accel vector
+	  202  tBodyAccMag-std()			    Time domain, std dev of mag of accel vector
+	  214  tGravityAccMag-mean()		    Time domain, mean magnitude of gravity vector
+	  215  tGravityAccMag-std()			    Time domain, std dev of mag of gravity vector
+	  227  tBodyAccJerkMag-mean()		    Time domain, mean magnitude of jerk vector
+	  228  tBodyAccJerkMag-std()		    Time domain, std dev of mag of jerk vector
+	  240  tBodyGyroMag-mean()			    Time domain, mean mag of angular motion vector
+	  241  tBodyGyroMag-std()			    Time domain, std dev of mag of angular motion vector
+	  253  tBodyGyroJerkMag-mean()		    Time domain, mean magnitude of angular jerk vector
+	  254  tBodyGyroJerkMag-std()		    Time domain, std dev of mag of angular jerk vector
+	  266  fBodyAcc-mean()-X				Frequency domain, mean body acceleration, x-axis
+	  267  fBodyAcc-mean()-Y				Frequency domain, mean body acceleration, y-axis
+	  268  fBodyAcc-mean()-Z				Frequency domain, mean body acceleration, z-axis
+	  269  fBodyAcc-std()-X    				Freq domain, standard deviation of body accel, x-axis
+	  270  fBodyAcc-std()-Y    				Freq domain, standard deviation of body accel, y-axis
+	  271  fBodyAcc-std()-Z    				Freq domain, standard deviation of body accel, z-axis
+	  294  fBodyAcc-meanFreq()-X			Freq domain, weighted mean of body accel, x-axis
+	  295  fBodyAcc-meanFreq()-Y			Freq domain, weighted mean of body accel, y-axis
+	  296  fBodyAcc-meanFreq()-Z			Freq domain, weighted mean of body accel, z-axis
+	  345  fBodyAccJerk-mean()-X			Freq domain, mean jerk (derivative of accel), x-axis
+	  346  fBodyAccJerk-mean()-Y			Freq domain, mean jerk (derivative of accel), y-axis
+	  347  fBodyAccJerk-mean()-Z			Freq domain, mean jerk (derivative of accel), z-axis
+	  348  fBodyAccJerk-std()-X				Freq domain, std dev of jerk, x-axis
+	  349  fBodyAccJerk-std()-Y				Freq domain, std dev of jerk, y-axis
+	  350  fBodyAccJerk-std()-Z				Freq domain, std dev of jerk, z-axis
+	  373  fBodyAccJerk-meanFreq()-X		Freq domain, weighted mean of body jerk, x-axis
+	  374  fBodyAccJerk-meanFreq()-Y		Freq domain, weighted mean of body jerk, y-axis
+	  375  fBodyAccJerk-meanFreq()-Z		Freq domain, weighted mean of body jerk, z-axis
+	  424  fBodyGyro-mean()-X				Freq domain, mean angular motion, x-axis
+	  425  fBodyGyro-mean()-Y				Freq domain, mean angular motion, y-axis
+	  426  fBodyGyro-mean()-Z				Freq domain, mean angular motion, z-axis
+	  427  fBodyGyro-std()-X				Freq domain, std dev of angular motion, x-axis
+	  428  fBodyGyro-std()-Y				Freq domain, std dev of angular motion, y-axis
+	  429  fBodyGyro-std()-Z				Freq domain, std dev of angular motion, z-axis
+	  452  fBodyGyro-meanFreq()-X			Freq domain, weighted mean of angular jerk, x-axis
+	  453  fBodyGyro-meanFreq()-Y			Freq domain, weighted mean of angular jerk, y-axis
+	  454  fBodyGyro-meanFreq()-Z			Freq domain, weighted mean of angular jerk, z-axis
+	  503  fBodyAccMag-mean()				Freq domain, mean magnitude of accel vector
+	  504  fBodyAccMag-std()				Freq domain, std dev of mag of accel vector
+	  513  fBodyAccMag-meanFreq()			Freq domain, weighted mean of mag of accel vector
+	  516  fBodyBodyAccJerkMag-mean()		Freq domain, mean magnitude of jerk vector
+	  517  fBodyBodyAccJerkMag-std()		Freq domain, std dev of mag of jerk vector
+	  526  fBodyBodyAccJerkMag-meanFreq()	Freq domain, weighted mean of mag of jerk vector
+	  529  fBodyBodyGyroMag-mean()			Freq domain, mean mag of angular motion vector
+	  530  fBodyBodyGyroMag-std()			Freq domain, std dev of mag of ang motion vector
+	  539  fBodyBodyGyroMag-meanFreq()		Freq domain, weighted mean of mag of ang vector
+	  542  fBodyBodyGyroJerkMag-mean()		Freq domain, mean mag of angular jerk vector
+	  543  fBodyBodyGyroJerkMag-std()		Freq domain, std dev of mag of ang jerk vector
+	  552  fBodyBodyGyroJerkMag-meanFreq()	Freq domain, weighted mean of ang jerk vector
 
+#### Other Generated Files ####
+
+* **Tidy\_Raw\_Samsung_Data.txt:** This file is generated when the runtime parameter of **lean = FALSE** is used. It is a dump of the **allData** data table, a tidy data set of the Samsung data before the final mean values are calculated.
+
+* **Excel Truth.xlsx:** This is a file where I imported the **Tidy\_Raw\_Samsung_Data.txt:** file and created a pivot table to use as a model. It helped me get my mind around what I should expect to see as the final result from Step 5 of the problem.
+
+* **Tidy\_Samsung\_Data\_Averages\_by\_Activity\_and\_Subject:** This is final file generated by default by the program, where the means values of all column vectors are calculated for every activity and every subject. It is the output of the **tidyData** data table.
+
+* **tidyOut Results.xlsx:** This is merely and Excel import of the final results from the above file to compare with the **Excel Truth.xlsx** model.
