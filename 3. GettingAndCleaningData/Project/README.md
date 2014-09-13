@@ -49,7 +49,7 @@ or, just _run\_analysis _()_ to accept defaults.
 
 ##### 1. Uses descriptive activity names to name the activities in the data set #####
 
-* It does this by reading in and combining the Activity and Subject ID information from the test and training datasets (described below and in the Code Book). Activity IDs are replaced by edited descriptive names. The resulting character and numeric vectors are combined into a single data frame, called **dataFrame1**, with 2 columns and 10,299 rows.
+* It does this by reading in and combining the Activity and Subject ID information from the test and training datasets (described below and in the Code Book). Activity IDs are replaced by edited descriptive names using _lapply ()_ and an embedded function using a _switch ()_ statement. The resulting character and numeric vectors are combined into a single data frame, called **dataFrame1**, with 2 columns and 10,299 rows.
 
 ##### 2. Merges the training and the test sets to create one data set. #####
 
