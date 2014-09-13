@@ -77,7 +77,7 @@ I found the following diagram from Community TA, David Hood, to be quite helpful
 
 #### Combining Activity and Subject Test and Training Data ####
 
-Combining the Subject data from **./UCI HAR Dataset/test/subject\_test.txt** and **./UCI HAR Dataset/train/subject\_train.txt** and the Activity data from **./UCI HAR Dataset/test/y\_test.txt** and **./UCI HAR Dataset/train/subject\_train.txt ** is quite trivial. 
+Combining the Subject data from **./UCI HAR Dataset/test/subject\_test.txt** and **./UCI HAR Dataset/train/subject\_train.txt** and the Activity data from **./UCI HAR Dataset/test/y\_test.txt** and **./UCI HAR Dataset/train/subject\_train.txt** is quite trivial. 
 
 * The order is arbitrary, so I chose to start with the test data and then added the training data. 
 
@@ -99,7 +99,7 @@ Since there were only 6 values, rather than reading in the **activity\_labels.tx
 
 #### Combining Activity and Subject Data ####
 
-It was important to maintain the referential integrity of the data, since each row of Activity label and subject ID data corresponds to the measured values from the **X\_test** and **X\_train data** (to be discussed later).  Therefore, at this stage I combined the Activity and Subject data without sorting. However, I transformed the Subject ID from character to numeric to support proper sorting later on. I then combined these into a temporary data frame using the ***dataFrame1 <- data.frame (Activity, Subject)*** command.
+It was important to maintain the referential integrity of the data, since each row of Activity label and subject ID data corresponds to the measured values from the **X\_test** and **X\_train data** (to be discussed later).  Therefore, at this stage I combined the Activity and Subject data without sorting. However, I transformed the Subject ID from character to numeric to support proper sorting later on. I then combined these into a temporary data frame using the *dataFrame1 <- data.frame (Activity, Subject)* command.
 
 
 #### Combining the Unlabeled X\__ Data ####
