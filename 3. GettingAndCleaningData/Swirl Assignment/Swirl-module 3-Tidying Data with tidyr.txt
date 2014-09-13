@@ -398,50 +398,6 @@ Error: could not find function "submt"
 
 | Excellent work!
 
-  |====================================================                                           |  55%
-
-| Edit the R script and type submit() when you are ready. Type reset() to reset the script to its
-| original state.
-
-> submit()
-
-| Sourcing your script...
-
-Error : Invalid column specification
-
-| You almost had it, but not quite. Try again.
-
-| Read the directions in the script carefully. If R is giving you an error, try to understand what it is
-| telling you. Type submit() at the prompt when you are ready, or type reset() to reset the script to
-| its original state.
-
-> submit()
-
-| Sourcing your script...
-
-Error in source(e$script_temp_path) : 
-  /var/folders/y9/dy0py62x03n655rs5zbcvvfh0000gr/T//RtmpJ0bjBO/script3.R:13:22: unexpected ')'
-12:   gather(class, grade, class1:class5, na.rm = TRUE) %>%
-13:   spread(grade, test))
-                         ^
-
-| Not quite! Try again.
-
-| Read the directions in the script carefully. If R is giving you an error, try to understand what it is
-| telling you. Type submit() at the prompt when you are ready, or type reset() to reset the script to
-| its original state.
-
-> submit()
-
-| Sourcing your script...
-
-Error : Duplicate identifiers for rows (15, 16), (3, 4), (11, 12)
-
-| You almost had it, but not quite. Try again.
-
-| Read the directions in the script carefully. If R is giving you an error, try to understand what it is
-| telling you. Type submit() at the prompt when you are ready, or type reset() to reset the script to
-| its original state.
 
 > submit()
 
