@@ -116,7 +116,7 @@ or, just _run\_analysis ()_ to accept defaults.
 		
 
 
-* The shrunken dataset are now stored in another interim data frame, called **dataFrame2**, using *rbind ()*.
+* The shrunken datasets are now stored in another interim data frame, called **dataFrame2**, using *rbind ()*.
 	 
 	    dataFrame2 <- rbind (testData, trainData)
 
