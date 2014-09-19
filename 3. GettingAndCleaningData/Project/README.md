@@ -104,7 +104,7 @@ or, just _run\_analysis ()_ to accept defaults.
 		
 	
 
-* We use the resulting combined list called **means\_n\_devs** to pare down the columns of the test and training data first, as well as a character vector called **features**, containing the column labels we want (to be used in Step 4).
+* We use the resulting combined list called **means\_n\_devs** to subset the columns of the test and training data first, as well as a character vector called **features**, containing the column labels we want (to be used in Step 4).
 
 	    means_n_devs <- sort (c (means,devs))
 		
