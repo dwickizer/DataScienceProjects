@@ -21,10 +21,10 @@ The file **run\_analysis.R** contains a single function by that name, **run\_ana
 
 To run the function: 
 
-_source _("run\_analysis.R")_  
-_run\_analysis _(lean = TRUE, tidyOut = TRUE)_ 
+_source ("run\_analysis.R")_  
+_run\_analysis (lean = TRUE, tidyOut = TRUE)_ 
 
-or, just _run\_analysis _()_ to accept defaults.
+or, just _run\_analysis ()_ to accept defaults.
 
 #### Optional Parameters ####
 
