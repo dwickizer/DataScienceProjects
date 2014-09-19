@@ -49,7 +49,7 @@ or, just _run\_analysis ()_ to accept defaults.
 
 ##### 1. Uses descriptive activity names to name the activities in the data set #####
 
-* It does this by reading in and combining the Activity and Subject ID information from the test and training datasets (using the *read.table ()* function. The test and train data for each is combined using *rbind ()*:
+* It does this by reading in and combining the Activity and Subject ID information from the test and training datasets using the *read.table ()* function. The test and train data for each is combined using *rbind ()*:
 
 	    # Read in test subjects
 	    subjTestDat <- read.table("./UCI HAR Dataset/test/subject_test.txt", colClasses = "numeric") 
