@@ -96,7 +96,7 @@ or, just _run\_analysis ()_ to accept defaults.
 
 ##### 3. Extracts only the measurements on the mean and standard deviation for each measurement. #####
 
-* We perform two searches through the features.txt file using _grep ()_, looking for column names and their IDs, which contain either means or standard deviations (std). 
+* The function performs two searches through the features.txt file using _grep ()_, looking for column names and their IDs, which contain either means or standard deviations (std). 
 
 		features <- read.table ("./UCI HAR Dataset/features.txt")
 	    means <- grep ("mean", features [,2])
@@ -104,7 +104,7 @@ or, just _run\_analysis ()_ to accept defaults.
 		
 	
 
-* We use the resulting combined list called **means\_n\_devs** to subset the columns of the test and training data first, as well as a character vector called **features**, containing the column labels we want (to be used in Step 4).
+* The resulting combined list called **means\_n\_devs** is used to subset the columns of the test and training data first, as well as a character vector called **features**, containing the column labels we want (to be used in Step 4).
 
 	    means_n_devs <- sort (c (means,devs))
 		
@@ -123,17 +123,17 @@ or, just _run\_analysis ()_ to accept defaults.
 
 ##### 4. Appropriately labels the data set with descriptive variable names. #####
 
-* We write out **dataFrame2** to a temporary file, using _write.table ()_ with **row.names** and **col.names** set to **FALSE** (clearing the row and column names). 
+* The data frame **dataFrame2** is written to a temporary file, using _write.table ()_ with **row.names** and **col.names** set to **FALSE** (clearing the row and column names). 
 
 	    write.table (dataFrame2, "./tmp.dat", row.names = FALSE, col.names = FALSE)
 
 
-* We read in the data frame using _read.table ()_, setting **colClasses** = **features**.  This gives us the proper column labels
+* The data frame is then read in using _read.table ()_, setting **colClasses** = **features**.  This gives the proper column labels
 
 	    dataFrame2 <- read.table ("./tmp.dat", col.names = features[,2])
 
 
-* Lastly, we combine **dataFrame1** (containing the labels and subject IDs) and **dataFrame2** (containing the measurements) into one data table called **allData**, which is then arranged by Activity, then by Subject IDs using the _arrange ()_ command.
+* Lastly, **dataFrame1** (containing the labels and subject IDs) and **dataFrame2** (containing the measurements) are combined into one data table called **allData**, which is then arranged by Activity, then by Subject IDs using the _arrange ()_ command.
 
 	    allData <- arrange (data.frame(dataFrame1, dataFrame2), Activity, Subject)
     
